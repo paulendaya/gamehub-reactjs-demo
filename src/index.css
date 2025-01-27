@@ -19,26 +19,26 @@
   opacity: 0.6;
 }
 
-body.dark {
+html.dark body {
   background: #333;
   color: white;
 }
 #root {
   padding: 20px;
 }
-body.dark .chakra-input {
+html.dark .chakra-input {
   border: 1px solid #999;
 }
 
 
-body.light {
+html.light {
   background: #FFF;
   color: #333;
 }
-body.light .chakra-input {
+html.light .chakra-input {
   border: 1px solid #333;
   color: #333;
 }
-body.light .genre-item {
+html.light .genre-item {
   color: #333;
 }
