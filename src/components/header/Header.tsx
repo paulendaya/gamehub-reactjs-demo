@@ -4,6 +4,7 @@ import { Flex, Input } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { LuSearch } from "react-icons/lu";
 import { useEffect } from "react";
+import { ColorModeButton, useColorMode } from "../ui/color-mode";
 
 interface Props {
   theme: string;
@@ -18,11 +19,7 @@ const Header = ({
   searchOnChange,
   searchKeyword,
 }: Props) => {
-  useEffect(() => {
-    document.body.classList.remove(theme === "light" ? "dark" : "light");
-    document.body.classList.add(theme);
-  });
-
+  const { toggleColorMode, colorMode } = useColorMode();
   return (
     <header>
       <Flex gap="3" align="center">
@@ -33,7 +30,7 @@ const Header = ({
           fit="cover"
           alt="Game Hub"
         />
-        <InputGroup width="full" flex="1" startElement={<LuSearch />}>
+        <InputGroup width="full" flex="1" startElement={<LuSearch />} >
           <Input
             size="lg"
             placeholder="Search games"
@@ -46,9 +43,10 @@ const Header = ({
         </InputGroup>
         <Switch
           colorPalette="teal"
-          onChange={(event) => onChangeTheme(event)}
-          defaultChecked
+          onChange={toggleColorMode}
+          checked={colorMode == "dark" ? true : false}
         />
+        {/* <ColorModeButton /> */}
       </Flex>
     </header>
   );

@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-import { Provider } from "./components/ui/provider";
+import { useState } from "react";
 import Header from "./components/header/Header";
 import GenreList from "./components/GenreList";
 import useGames from "./hooks/useGames";
@@ -7,15 +6,11 @@ import { GamePlatform, Genre } from "./services/game-service";
 import GameList from "./components/GameList";
 import PlatformsFilter from "./components/PlatformsFilter";
 import GameSorter from "./components/GameSorter";
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { ColorModeProvider } from "./components/ui/color-mode";
 
 function App() {
-  const {
-    genres,
-    games,
-    platforms,
-    errors,
-    isLoading,
-  } = useGames();
+  const { genres, games, platforms, errors, isLoading } = useGames();
 
   const [theme, setTheme] = useState("dark");
   const [selectedSorter, setSorter] = useState("name");
@@ -94,51 +89,53 @@ function App() {
 
   return (
     <div>
-      <Provider>
-        <Header
-          theme={theme}
-          onChangeTheme={(event) => handleClick(event)}
-          searchOnChange={handleSearch}
-          searchKeyword={searchKeyword}
-        />
+      <ChakraProvider value={defaultSystem}>
+        <ColorModeProvider>
+          <Header
+            theme={theme}
+            onChangeTheme={(event) => handleClick(event)}
+            searchOnChange={handleSearch}
+            searchKeyword={searchKeyword}
+          />
 
-        <div className="row mt-4">
-          <div className="col-md-3">
-            <h3 className="text-start mb-4">Genres</h3>
-            <GenreList
-              genres={genres}
-              onClick={(genre) => {
-                setGenre(genre);
-              }}
-              selectedGenre={selectedGenre}
-            />
-          </div>
-          <div className="col-md-9">
-            {errors.map((error) => (
-              <p className="text-danger">{error}</p>
-            ))}
-            <h1>
-              {selectedPlatformName} {selectedGenre.name} Games
-            </h1>
-            <div className="my-3">
-              <div className="d-flex gap-3">
-                <PlatformsFilter
-                  platforms={platforms}
-                  selectedPlatform={selectedPlatform}
-                  onChange={(id) => {
-                    handleSelectPlatform(id);
-                  }}
-                />
-                <GameSorter
-                  selectedSorter={selectedSorter}
-                  onChange={(sorter) => setSorter(sorter)}
-                />
-              </div>
+          <div className="row mt-4">
+            <div className="col-md-3">
+              <h3 className="text-start mb-4">Genres</h3>
+              <GenreList
+                genres={genres}
+                onClick={(genre) => {
+                  setGenre(genre);
+                }}
+                selectedGenre={selectedGenre}
+              />
             </div>
-            <GameList games={visibleGames} isLoading={isLoading} />
+            <div className="col-md-9">
+              {errors.map((error) => (
+                <p className="text-danger">{error}</p>
+              ))}
+              <h1>
+                {selectedPlatformName} {selectedGenre.name} Games
+              </h1>
+              <div className="my-3">
+                <div className="d-flex gap-3">
+                  <PlatformsFilter
+                    platforms={platforms}
+                    selectedPlatform={selectedPlatform}
+                    onChange={(id) => {
+                      handleSelectPlatform(id);
+                    }}
+                  />
+                  <GameSorter
+                    selectedSorter={selectedSorter}
+                    onChange={(sorter) => setSorter(sorter)}
+                  />
+                </div>
+              </div>
+              <GameList games={visibleGames} isLoading={isLoading} />
+            </div>
           </div>
-        </div>
-      </Provider>
+        </ColorModeProvider>
+      </ChakraProvider>
     </div>
   );
 }
