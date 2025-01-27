@@ -8,10 +8,7 @@
 .chakra-button[data-selected="true"] {
   font-weight: bold;
 }
-.chakra-select__control {
-  min-width: 200px;
-  
-}
+
 .chakra-select__control button {
   border-radius: 5px;
 }

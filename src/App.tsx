@@ -8,6 +8,7 @@ import PlatformsFilter from "./components/PlatformsFilter";
 import GameSorter from "./components/GameSorter";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
+import GenreFilter from "./components/GenreFilter";
 
 function App() {
   const { genres, games, platforms, errors, isLoading } = useGames();
@@ -82,6 +83,28 @@ function App() {
     }
   };
 
+  //handleSelectGenre of Genre filter
+  const handleSelectGenre = (id: number) => {
+    if (id) {
+      genres.forEach((genre) => {
+        if (genre.id === id)
+          setGenre({
+            id: genre.id,
+            name: genre.name,
+            slug: genre.slug,
+            image_background: genre.image_background,
+          });
+      });
+    } else {
+      setGenre({
+        id: 0,
+        name: "",
+        slug: "",
+        image_background: "",
+      });
+    }
+  };
+
   //handleSelectPlatform of Platform filter
   const handleSearch = (value: string = "") => {
     setSearchKeyword(value);
@@ -99,7 +122,7 @@ function App() {
           />
 
           <div className="row mt-4">
-            <div className="col-md-3">
+            <div className="col-md-3 d-md-block d-none">
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
                 genres={genres}
@@ -117,18 +140,31 @@ function App() {
                 {selectedPlatformName} {selectedGenre.name} Games
               </h1>
               <div className="my-3">
-                <div className="d-flex gap-3">
-                  <PlatformsFilter
-                    platforms={platforms}
-                    selectedPlatform={selectedPlatform}
-                    onChange={(id) => {
-                      handleSelectPlatform(id);
-                    }}
-                  />
-                  <GameSorter
-                    selectedSorter={selectedSorter}
-                    onChange={(sorter) => setSorter(sorter)}
-                  />
+                <div className="d-flex gap-3 flex-md-row flex-column">
+                  <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
+                    <GenreFilter
+                      genres={genres}
+                      selectedGenre={selectedGenre}
+                      onChange={(id) => {
+                        handleSelectGenre(id);
+                      }}
+                    />
+                  </div>
+                  <div className="flex-md-grow-0 flex-grow-1">
+                    <PlatformsFilter
+                      platforms={platforms}
+                      selectedPlatform={selectedPlatform}
+                      onChange={(id) => {
+                        handleSelectPlatform(id);
+                      }}
+                    />
+                  </div>
+                  <div className="flex-md-grow-0 flex-grow-1">
+                    <GameSorter
+                      selectedSorter={selectedSorter}
+                      onChange={(sorter) => setSorter(sorter)}
+                    />
+                  </div>
                 </div>
               </div>
               <GameList games={visibleGames} isLoading={isLoading} />
