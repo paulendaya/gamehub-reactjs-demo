@@ -1,0 +1,44 @@
+.chakra-input {
+  border-radius: 30px;
+}
+.chakra-button:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+.chakra-button[data-selected="true"] {
+  font-weight: bold;
+}
+.chakra-select__control {
+  min-width: 200px;
+  
+}
+.chakra-select__control button {
+  border-radius: 5px;
+}
+.platforms-list {
+  opacity: 0.6;
+}
+
+body.dark {
+  background: #333;
+  color: white;
+}
+#root {
+  padding: 20px;
+}
+body.dark .chakra-input {
+  border: 1px solid #999;
+}
+
+
+body.light {
+  background: #FFF;
+  color: #333;
+}
+body.light .chakra-input {
+  border: 1px solid #333;
+  color: #333;
+}
+body.light .genre-item {
+  color: #333;
+}
