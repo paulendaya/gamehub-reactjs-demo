@@ -30,7 +30,7 @@ const Header = ({
           fit="cover"
           alt="Game Hub"
         />
-        <InputGroup width="full" flex="1" startElement={<LuSearch />} >
+        <InputGroup width="full" flex="1" startElement={<LuSearch />}>
           <Input
             size="lg"
             placeholder="Search games"
@@ -41,11 +41,15 @@ const Header = ({
             onChange={(event) => searchOnChange(event.currentTarget.value)}
           />
         </InputGroup>
-        <Switch
-          colorPalette="teal"
-          onChange={toggleColorMode}
-          checked={colorMode == "dark" ? true : false}
-        />
+        <Flex gap="3" align="center">
+          <Switch
+            colorPalette="teal"
+            onChange={toggleColorMode}
+            checked={colorMode == "dark" ? true : false}
+          />
+          <div>Dark Mode</div>
+        </Flex>
+
         {/* <ColorModeButton /> */}
       </Flex>
     </header>
