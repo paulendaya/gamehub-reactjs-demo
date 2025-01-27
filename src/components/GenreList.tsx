@@ -17,7 +17,7 @@ const GenreList = ({ genres, onClick, selectedGenre }: Props) => {
           data-selected={genre.id == selectedGenre.id ? true : false}
           variant="ghost"
           key={genre.id}
-          onClick={() => onClick(genre)}
+          onClick={(event) => onClick(genre)}
         >
           <Image
             rounded="md"
