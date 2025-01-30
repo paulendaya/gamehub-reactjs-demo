@@ -31,10 +31,6 @@ export interface GameResults {
   results: Game[];
 }
 
-export interface GamePlatform {
-  platform: Platform;
-}
-
 export interface Platform {
   id: number;
   name: string;
@@ -43,10 +39,6 @@ export interface Platform {
 
 export interface PlatformResults {
   results: Platform[];
-}
-
-export interface PlatformParent {
-  platform: Platform;
 }
 
 class GameService {

@@ -1,4 +1,4 @@
-import { Game, PlatformParent } from "@/services/game-service";
+import { Game } from "@/services/game-service";
 import { Card, Image } from "@chakra-ui/react";
 import CriticScore from "./CriticScore";
 import PlatformList from "./PlatformList";
