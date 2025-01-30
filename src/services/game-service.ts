@@ -17,7 +17,7 @@ export interface Game {
   slug: string;
   name: string;
   metacritic: number;
-  parent_platforms: [],
+  parent_platforms: {platform: Platform}[],
   genres: [], 
   rating: number;
 }

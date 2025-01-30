@@ -3,7 +3,6 @@ import { InputGroup } from "../ui/input-group";
 import { Flex, Input } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { LuSearch } from "react-icons/lu";
-import { useEffect } from "react";
 import { ColorModeButton, useColorMode } from "../ui/color-mode";
 
 interface Props {
