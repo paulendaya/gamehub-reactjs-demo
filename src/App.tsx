@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./components/header/Header";
 import GenreList from "./components/GenreList";
 import useGames from "./hooks/useGames";
-import { GamePlatform, Genre } from "./services/game-service";
+import { Genre } from "./services/game-service";
 import GameList from "./components/GameList";
 import PlatformsFilter from "./components/PlatformsFilter";
 import GameSorter from "./components/GameSorter";
@@ -30,8 +30,8 @@ function App() {
     const platformMatches =
       selectedPlatform !== 0
         ? game.parent_platforms.some(
-            (platform: GamePlatform) =>
-              platform.platform.id === selectedPlatform
+            ({platform}) =>
+              platform.id === selectedPlatform
           )
         : true; // If no platform is selected, consider it a match
 
