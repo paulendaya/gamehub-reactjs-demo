@@ -13,7 +13,7 @@ const GameList = ({ games, isLoading }: Props) => {
     <div>
       <div className="row">
         {games.map((game) => (
-          <div key={game.id} className="col-xl-3 col-md-6 col-6 mb-3">
+          <div key={game.id} className="col-xl-3 col-md-6 col-sm-6 col-12 mb-3">
             {isLoading ? <GameCardLoader /> : <GameCard game={game} />}
           </div>
         ))}

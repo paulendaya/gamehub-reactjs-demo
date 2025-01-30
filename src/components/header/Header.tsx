@@ -41,16 +41,20 @@ const Header = ({
             onChange={(event) => searchOnChange(event.currentTarget.value)}
           />
         </InputGroup>
-        <Flex gap="3" align="center">
-          <Switch
-            colorPalette="teal"
-            onChange={toggleColorMode}
-            checked={colorMode == "dark" ? true : false}
-          />
-          <div>Dark Mode</div>
-        </Flex>
+        <div className="d-md-block d-none">
+          <Flex gap="3" align="center">
+            <Switch
+              colorPalette="teal"
+              onChange={toggleColorMode}
+              checked={colorMode == "dark" ? true : false}
+            />
+            <div>Dark Mode</div>
+          </Flex>
+        </div>
 
-        {/* <ColorModeButton /> */}
+        <div className="d-md-none d-block">
+          <ColorModeButton />
+        </div>
       </Flex>
     </header>
   );
