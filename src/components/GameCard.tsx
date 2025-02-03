@@ -1,6 +1,5 @@
 import { Game, PlatformParent } from "@/services/game-service";
 import { Card, Image } from "@chakra-ui/react";
-import { Tag } from "./ui/tag";
 import { BsNintendoSwitch } from "react-icons/bs";
 import {
   FaApple,
@@ -14,6 +13,7 @@ import {
 import { FaAndroid } from "react-icons/fa6";
 import { IoLogoAppleAppstore } from "react-icons/io5";
 import { SiAtari, SiCommodore, SiSega, SiWeb3Dotjs } from "react-icons/si";
+import CriticScore from "./CriticScore";
 
 interface Props {
   game: Game;
@@ -107,7 +107,7 @@ const GameCard = ({ game }: Props) => {
         <Card.Body gap="2">
           <div className="d-flex justify-content-between">
             <div className="platforms-list d-flex flex-wrap gap-2">
-              {game.parent_platforms.map(({platform}) => {
+              {game.parent_platforms.map(({ platform }) => {
                 let platformIcon = null;
                 switch (platform.name) {
                   case "PC":
@@ -159,11 +159,7 @@ const GameCard = ({ game }: Props) => {
                 return <div key={platform.id}>{platformIcon}</div>;
               })}
             </div>
-            {game.metacritic && (
-              <Tag size="sm" colorPalette="teal">
-                {game.metacritic}
-              </Tag>
-            )}
+            <CriticScore metacritic={game.metacritic} />
           </div>
           <Card.Title>{game.name}</Card.Title>
 
