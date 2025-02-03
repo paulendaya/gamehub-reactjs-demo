@@ -1,5 +1,10 @@
 import apiClient from "./api-client";
 
+export interface ImageDimension {
+  width: number;
+  height: number;
+}
+
 export interface Genre  {
   id: number;
   image_background: string;
