@@ -1,19 +1,22 @@
 import { Genre } from "@/services/game-service";
 import getCroppedImageUrl from "@/services/image-url";
 import { Button, Image } from "@chakra-ui/react";
+import GenreItemLoader from "./GenreItemLoader";
 
 interface Props {
   genres: Genre[];
   onClick: (genre: Genre) => void;
   selectedGenre: Genre;
+  isLoading: boolean;
 }
 
-const GenreList = ({ genres, onClick, selectedGenre }: Props) => {
+const GenreList = ({ genres, onClick, selectedGenre, isLoading }: Props) => {
   const imageDimension = {
     width: 600,
     height: 400,
   };
   const handleClick = (id: number) => {};
+  if (isLoading) return genres.map((genre) => <GenreItemLoader />);
   return (
     <>
       {genres.map((genre) => (

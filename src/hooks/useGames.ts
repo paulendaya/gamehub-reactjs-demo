@@ -12,7 +12,7 @@ const useGames = () => {
     const [genres, setGenres] = useState<Genre[]>([]);
     const [games, setGames] = useState<Game[]>([]);
     const [errors, setError] = useState<String[]>([]);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
