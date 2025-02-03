@@ -130,6 +130,7 @@ function App() {
                   setGenre(genre);
                 }}
                 selectedGenre={selectedGenre}
+                isLoading={isLoading}
               />
             </div>
             <div className="col-md-9">
