@@ -1,4 +1,5 @@
 import { Genre } from "@/services/game-service";
+import getCroppedImageUrl from "@/services/image-url";
 import { Button, Image } from "@chakra-ui/react";
 
 interface Props {
@@ -8,6 +9,10 @@ interface Props {
 }
 
 const GenreList = ({ genres, onClick, selectedGenre }: Props) => {
+  const imageDimension = {
+    width: 600,
+    height: 400,
+  };
   const handleClick = (id: number) => {};
   return (
     <>
@@ -21,7 +26,7 @@ const GenreList = ({ genres, onClick, selectedGenre }: Props) => {
         >
           <Image
             rounded="md"
-            src={genre.image_background}
+            src={getCroppedImageUrl(genre.image_background, imageDimension)}
             alt={genre.name}
             aspectRatio={1 / 1}
             width="50px"

@@ -1,26 +1,18 @@
 import { Game, PlatformParent } from "@/services/game-service";
 import { Card, Image } from "@chakra-ui/react";
-import { BsNintendoSwitch } from "react-icons/bs";
-import {
-  FaApple,
-  FaGlobe,
-  FaLinux,
-  FaNeos,
-  FaPlaystation,
-  FaWindows,
-  FaXbox,
-} from "react-icons/fa";
-import { FaAndroid } from "react-icons/fa6";
-import { IoLogoAppleAppstore } from "react-icons/io5";
-import { SiAtari, SiCommodore, SiSega, SiWeb3Dotjs } from "react-icons/si";
 import CriticScore from "./CriticScore";
 import PlatformList from "./PlatformList";
+import getCroppedImageUrl from "@/services/image-url";
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  const imageDimension = {
+    width: 600,
+    height: 400,
+  };
   /* return (
     <div>
       <Card.Root maxW="sm" overflow="hidden">
@@ -101,7 +93,7 @@ const GameCard = ({ game }: Props) => {
     <div>
       <Card.Root maxW="sm" overflow="hidden">
         <Image
-          src={game.background_image}
+          src={getCroppedImageUrl(game.background_image, imageDimension)}
           alt={game.name}
           aspectRatio={16 / 12}
         />
