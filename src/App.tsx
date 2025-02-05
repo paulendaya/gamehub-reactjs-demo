@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "./components/header/Header";
 import GenreList from "./components/GenreList";
-import useGames from "./hooks/useGames";
 import { Genre } from "./services/game-service";
 import GameList from "./components/GameList";
 import PlatformsFilter from "./components/PlatformsFilter";
@@ -9,7 +8,7 @@ import GameSorter from "./components/GameSorter";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
-import useGamesFinal from "./hooks/useGamesFinal";
+import useGamesFinal from "./hooks/useGames";
 import useGenres from "./hooks/useGenres";
 import usePlatforms from "./hooks/usePlatforms";
 
@@ -141,7 +140,7 @@ function App() {
               />
             </div>
             <div className="col-md-9">
-              {errorsGames.map((error) => (
+              {errorsGenres.map((error) => (
                 <p className="text-danger">{error}</p>
               ))}
               <h1>
