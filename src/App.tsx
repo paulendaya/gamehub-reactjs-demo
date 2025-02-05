@@ -8,12 +8,12 @@ import GameSorter from "./components/GameSorter";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
-import useGamesFinal from "./hooks/useGames";
+import useGames from "./hooks/useGames";
 import useGenres from "./hooks/useGenres";
 import usePlatforms from "./hooks/usePlatforms";
 
 function App() {
-  const { games, errorsGames, isLoadingGames } = useGamesFinal();
+  const { games, errorsGames, isLoadingGames } = useGames();
   const { genres, errorsGenres, isLoadingGenres } = useGenres();
   const { platforms, errorsPlatforms, isLoadingPlatforms } = usePlatforms();
 
@@ -21,12 +21,7 @@ function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedPlatform, setPlatform] = useState(0);
   const [selectedPlatformName, setPlatformName] = useState("");
-  const [selectedGenre, setGenre] = useState<Genre>({
-    id: 0,
-    name: "",
-    slug: "",
-    image_background: "",
-  });
+  const [selectedGenre, setGenre] = useState<Genre | null>(null);
 
   // Filtering starts here
   const visibleGames = games.filter((game) => {
@@ -38,8 +33,8 @@ function App() {
         : true; // If no platform is selected, consider it a match
 
     const genreMatches =
-      selectedGenre.id !== 0
-        ? game.genres.some((genre: Genre) => genre.id === selectedGenre.id)
+      selectedGenre?.id !== 0 && selectedGenre
+        ? game.genres.some((genre: Genre) => genre.id === selectedGenre?.id)
         : true; // If no genre is selected, consider it a match
 
     const searchMatches =
@@ -79,21 +74,10 @@ function App() {
   const handleSelectGenre = (id: number) => {
     if (id) {
       genres.forEach((genre) => {
-        if (genre.id === id)
-          setGenre({
-            id: genre.id,
-            name: genre.name,
-            slug: genre.slug,
-            image_background: genre.image_background,
-          });
+        if (genre.id === id) setGenre(genre);
       });
     } else {
-      setGenre({
-        id: 0,
-        name: "",
-        slug: "",
-        image_background: "",
-      });
+      setGenre(null);
     }
   };
 
@@ -106,10 +90,7 @@ function App() {
     <div>
       <ChakraProvider value={defaultSystem}>
         <ColorModeProvider>
-          <Header
-            searchOnChange={handleSearch}
-            searchKeyword={searchKeyword}
-          />
+          <Header searchOnChange={handleSearch} searchKeyword={searchKeyword} />
 
           <div className="row mt-4">
             <div className="col-md-3 d-md-block d-none">
@@ -131,7 +112,7 @@ function App() {
                 <p className="text-danger">{error}</p>
               ))}
               <h1>
-                {selectedPlatformName} {selectedGenre.name} Games
+                {selectedPlatformName} {selectedGenre?.name} Games
               </h1>
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
