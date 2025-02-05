@@ -11,11 +11,12 @@ import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
 import useGamesFinal from "./hooks/useGamesFinal";
 import useGenres from "./hooks/useGenres";
+import usePlatforms from "./hooks/usePlatforms";
 
 function App() {
   const { games, errorsGames, isLoadingGames } = useGamesFinal();
   const { genres, errorsGenres, isLoadingGenres } = useGenres();
-  const { platforms, errors, isLoading } = useGames();
+  const { platforms, errorsPlatforms, isLoadingPlatforms } = usePlatforms();
 
   const [theme, setTheme] = useState("dark");
   const [selectedSorter, setSorter] = useState("name");
@@ -126,6 +127,9 @@ function App() {
 
           <div className="row mt-4">
             <div className="col-md-3 d-md-block d-none">
+              {errorsGenres.map((error) => (
+                <p className="text-danger">{error}</p>
+              ))}
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
                 genres={genres}
@@ -137,7 +141,7 @@ function App() {
               />
             </div>
             <div className="col-md-9">
-              {errors.map((error) => (
+              {errorsGames.map((error) => (
                 <p className="text-danger">{error}</p>
               ))}
               <h1>
