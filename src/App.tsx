@@ -13,8 +13,6 @@ import useGenres from "./hooks/useGenres";
 import usePlatforms from "./hooks/usePlatforms";
 
 function App() {
-  const { platforms, errorsPlatforms, isLoadingPlatforms } = usePlatforms();
-
   const [selectedSorter, setSorter] = useState("name");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedPlatform, setPlatform] = useState(0);
@@ -56,7 +54,7 @@ function App() {
   }); */
 
   //handleSelectPlatform of Platform filter
-  const handleSelectPlatform = (id: number) => {
+  /* const handleSelectPlatform = (id: number) => {
     if (id) {
       setPlatform(id);
       platforms.forEach((platform) => {
@@ -66,7 +64,7 @@ function App() {
       setPlatform(0);
       setPlatformName("");
     }
-  };
+  }; */
 
   //handleSelectGenre of Genre filter
   /* const handleSelectGenre = (id: number) => {
@@ -115,13 +113,14 @@ function App() {
                     /> */}
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
-                    <PlatformsFilter
+                    {/* <PlatformsFilter
                       platforms={platforms}
                       selectedPlatform={selectedPlatform}
                       onChange={(id) => {
                         handleSelectPlatform(id);
                       }}
-                    />
+                    /> */}
+                    <PlatformsFilter />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <GameSorter
