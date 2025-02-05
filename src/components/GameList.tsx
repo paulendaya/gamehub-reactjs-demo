@@ -2,9 +2,14 @@ import GameCard from "./GameCard";
 import GameCardLoader from "./GameCardLoader";
 import useLocalLoading from "@/hooks/useLocalLoading";
 import useGames from "@/hooks/useGames";
+import { Genre } from "@/services/game-service";
 
-const GameList = () => {
-  const { data, isLoading } = useGames();
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const GameList = ({ selectedGenre }: Props) => {
+  const { data, isLoading } = useGames(selectedGenre);
   const localLoading = useLocalLoading(isLoading);
   return (
     <div>
