@@ -1,66 +1,33 @@
-import GameService, { Game, Genre, Platform } from '@/services/game-service'
-import { CanceledError } from 'axios';
-import React, { useEffect, useState } from 'react'
+import GameService, { Game } from "@/services/game-service";
+import { CanceledError } from "axios";
+import { useEffect, useState } from "react";
 
 const useGames = () => {
-    const [platforms, setPlatforms] = useState<Platform[]>([]);
-    const [genres, setGenres] = useState<Genre[]>([]);
     const [games, setGames] = useState<Game[]>([]);
-    const [errors, setError] = useState<String[]>([]);
-    const [isLoading, setLoading] = useState(true);
+    const [errorsGames, setErrorGames] = useState<String[]>([]);
+    const [isLoadingGames, setLoadingGames] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
-        //genres
-        const { request, cancel } = GameService.getGenres();
-        request
-          .then((res) => {
-            let data = res.data.results;
-            setGenres(data);
-            setLoading(false);
-            //console.log(res.data.results);
-          })
-          .catch((err) => {
-            if (err instanceof CanceledError) return;
-            setError([...errors, 'Error fetching genres: (' + err.message + ')']);
-            setLoading(false);
-          });
-        
+        setLoadingGames(true);
         //games
         const {gamesRequest, cancelGames} = GameService.getGames();
         gamesRequest
           .then(res => {
             let data = res.data.results;
             setGames(data);
-            setLoading(false);
+            setLoadingGames(false);
             //console.log(data);
           })
           .catch((err) => {
             if (err instanceof CanceledError) return;
-            setError([...errors, 'Error fetching games: (' + err.message + ')']);
-            setLoading(false);
+            setErrorGames([...errorsGames, 'Error fetching games: (' + err.message + ')']);
+            setLoadingGames(false);
           });
 
-          //platforms
-          const {platformsRequest, cancelPlatforms} = GameService.getPlatforms();
-          platformsRequest
-            .then(res => {
-              let data = res.data.results;
-              setPlatforms(data);
-              setLoading(false);
-              //console.log(data);
-            })
-            .catch((err) => {
-              if (err instanceof CanceledError) return;
-              setError([...errors, 'Error fetching platforms: (' + err.message + ')']);
-              setLoading(false);
-            });
+        }, []);
 
-          return () => cancel();
+        return {games, errorsGames, isLoadingGames};
 
-      }, []);
-  
-      return {genres, games, platforms, errors, isLoading, setGenres, setGames, setPlatforms, setError};
 }
 
-export default useGames
+export default useGames;
