@@ -13,7 +13,6 @@ import useGenres from "./hooks/useGenres";
 import usePlatforms from "./hooks/usePlatforms";
 
 function App() {
-  const { games, errorsGames, isLoadingGames } = useGames();
   const { platforms, errorsPlatforms, isLoadingPlatforms } = usePlatforms();
 
   const [selectedSorter, setSorter] = useState("name");
@@ -23,7 +22,7 @@ function App() {
   const [selectedGenre, setGenre] = useState<Genre | null>(null);
 
   // Filtering starts here
-  const visibleGames = games.filter((game) => {
+  /* const visibleGames = games.filter((game) => {
     const platformMatches =
       selectedPlatform !== 0
         ? game.parent_platforms.some(
@@ -41,11 +40,11 @@ function App() {
       game.name.toLowerCase().includes(searchKeyword.toLowerCase());
 
     return platformMatches && genreMatches && searchMatches; // Only include games that match all conditions
-  });
+  }); */
   // Filtering ends here
 
   // Sorting the visible games based on the selected criterion
-  const sortedGames = visibleGames.sort((a, b) => {
+  /* const sortedGames = visibleGames.sort((a, b) => {
     if (selectedSorter === "name") {
       return a.name.localeCompare(b.name);
     } else if (selectedSorter === "metacritic") {
@@ -54,7 +53,7 @@ function App() {
       return (b.rating || 0) - (a.rating || 0);
     }
     return 0; // Fallback if no valid criterion is selected
-  });
+  }); */
 
   //handleSelectPlatform of Platform filter
   const handleSelectPlatform = (id: number) => {
@@ -102,9 +101,6 @@ function App() {
               />
             </div>
             <div className="col-md-9">
-              {errorsGames.map((error) => (
-                <p className="text-danger">{error}</p>
-              ))}
               <h1>
                 {selectedPlatformName} {selectedGenre?.name} Games
               </h1>
@@ -135,7 +131,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <GameList games={visibleGames} isLoading={isLoadingGames} />
+              <GameList />
             </div>
           </div>
         </ColorModeProvider>
