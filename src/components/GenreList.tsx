@@ -8,7 +8,7 @@ import useLocalLoading from "@/hooks/useLocalLoading";
 interface Props {
   genres: Genre[];
   onClick: (genre: Genre) => void;
-  selectedGenre: Genre;
+  selectedGenre: Genre | null;
   isLoading: boolean;
 }
 
@@ -23,9 +23,9 @@ const GenreList = ({ genres, onClick, selectedGenre, isLoading }: Props) => {
   if (localLoading) {
     return (
       <>
-        <VStack gap={1} align={'start'}>
+        <VStack gap={1} align={"start"}>
           {genres.map((genre) => (
-            <GenreItemLoader />
+            <GenreItemLoader key={genre.id} />
           ))}
         </VStack>
       </>
@@ -36,7 +36,7 @@ const GenreList = ({ genres, onClick, selectedGenre, isLoading }: Props) => {
       {genres.map((genre) => (
         <Button
           className="genre-item d-flex gap-2 mb-4 px-0"
-          data-selected={genre.id == selectedGenre.id ? true : false}
+          data-selected={genre.id == selectedGenre?.id ? true : false}
           variant="ghost"
           key={genre.id}
           onClick={(event) => onClick(genre)}
