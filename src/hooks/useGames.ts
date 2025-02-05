@@ -2,11 +2,6 @@ import GameService, { Game, Genre, Platform } from '@/services/game-service'
 import { CanceledError } from 'axios';
 import React, { useEffect, useState } from 'react'
 
-interface Error {
-  type: string;
-  message: string;
-}
-
 const useGames = () => {
     const [platforms, setPlatforms] = useState<Platform[]>([]);
     const [genres, setGenres] = useState<Genre[]>([]);
