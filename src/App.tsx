@@ -9,9 +9,11 @@ import GameSorter from "./components/GameSorter";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
+import useGamesFinal from "./hooks/useGamesFinal";
 
 function App() {
-  const { genres, games, platforms, errors, isLoading } = useGames();
+  const { games, errorsGames, isLoadingGames } = useGamesFinal();
+  const { genres, platforms, errors, isLoading } = useGames();
 
   const [theme, setTheme] = useState("dark");
   const [selectedSorter, setSorter] = useState("name");
@@ -30,8 +32,7 @@ function App() {
     const platformMatches =
       selectedPlatform !== 0
         ? game.parent_platforms.some(
-            ({platform}) =>
-              platform.id === selectedPlatform
+            ({ platform }) => platform.id === selectedPlatform
           )
         : true; // If no platform is selected, consider it a match
 
@@ -168,7 +169,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <GameList games={visibleGames} isLoading={isLoading} />
+              <GameList games={visibleGames} isLoading={isLoadingGames} />
             </div>
           </div>
         </ColorModeProvider>
