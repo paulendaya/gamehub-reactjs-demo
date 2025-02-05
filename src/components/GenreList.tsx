@@ -1,6 +1,6 @@
 import { Genre } from "@/services/game-service";
 import getCroppedImageUrl from "@/services/image-url";
-import { Button, Image } from "@chakra-ui/react";
+import { Button, Image, VStack } from "@chakra-ui/react";
 import GenreItemLoader from "./GenreItemLoader";
 import useLocalLading from "@/hooks/useLocalLoading";
 import useLocalLoading from "@/hooks/useLocalLoading";
@@ -20,7 +20,17 @@ const GenreList = ({ genres, onClick, selectedGenre, isLoading }: Props) => {
     height: 400,
   };
   const handleClick = (id: number) => {};
-  if (localLoading) return genres.map((genre) => <GenreItemLoader />);
+  if (localLoading) {
+    return (
+      <>
+        <VStack gap={1} align={'start'}>
+          {genres.map((genre) => (
+            <GenreItemLoader />
+          ))}
+        </VStack>
+      </>
+    );
+  }
   return (
     <>
       {genres.map((genre) => (
