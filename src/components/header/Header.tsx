@@ -7,14 +7,12 @@ import { ColorModeButton, useColorMode } from "../ui/color-mode";
 
 interface Props {
   theme: string;
-  onChangeTheme: (event: React.FormEvent<HTMLLabelElement>) => void;
   searchOnChange: (value: string) => void;
   searchKeyword: string;
 }
 
 const Header = ({
   theme,
-  onChangeTheme,
   searchOnChange,
   searchKeyword,
 }: Props) => {
