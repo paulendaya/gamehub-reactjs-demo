@@ -17,7 +17,6 @@ function App() {
   const { genres, errorsGenres, isLoadingGenres } = useGenres();
   const { platforms, errorsPlatforms, isLoadingPlatforms } = usePlatforms();
 
-  const [theme, setTheme] = useState("dark");
   const [selectedSorter, setSorter] = useState("name");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedPlatform, setPlatform] = useState(0);
@@ -108,7 +107,6 @@ function App() {
       <ChakraProvider value={defaultSystem}>
         <ColorModeProvider>
           <Header
-            theme={theme}
             searchOnChange={handleSearch}
             searchKeyword={searchKeyword}
           />
