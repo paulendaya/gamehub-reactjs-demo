@@ -6,13 +6,11 @@ import { LuSearch } from "react-icons/lu";
 import { ColorModeButton, useColorMode } from "../ui/color-mode";
 
 interface Props {
-  theme: string;
   searchOnChange: (value: string) => void;
   searchKeyword: string;
 }
 
 const Header = ({
-  theme,
   searchOnChange,
   searchKeyword,
 }: Props) => {
