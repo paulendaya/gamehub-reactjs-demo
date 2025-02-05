@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./components/header/Header";
 import GenreList from "./components/GenreList";
-import { Genre } from "./services/game-service";
+import { Genre, Platform } from "./services/game-service";
 import GameList from "./components/GameList";
 import PlatformsFilter from "./components/PlatformsFilter";
 import GameSorter from "./components/GameSorter";
@@ -11,9 +11,22 @@ import { ColorModeProvider } from "./components/ui/color-mode";
 function App() {
   const [selectedSorter, setSorter] = useState("name");
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [selectedPlatform, setPlatform] = useState(0);
+  const [selectedPlatform, setPlatform] = useState<Platform | null>(null);
   const [selectedPlatformName, setPlatformName] = useState("");
   const [selectedGenre, setGenre] = useState<Genre | null>(null);
+
+  //handleSelectPlatform of Platform filter
+  /* const handleSelectPlatform = (id: number) => {
+    if (id) {
+      setPlatform(id);
+      platforms.forEach((platform) => {
+        if (platform.id === id) setPlatformName(platform.name);
+      });
+    } else {
+      setPlatform(0);
+      setPlatformName("");
+    }
+  }; */
 
   //handleSelectPlatform of Platform filter
   const handleSearch = (value: string = "") => {
