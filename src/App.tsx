@@ -63,16 +63,6 @@ function App() {
     return 0; // Fallback if no valid criterion is selected
   });
 
-  //handClick of dark mode switcher
-  const handleClick = (event: React.FormEvent<HTMLLabelElement>) => {
-    const input = event.currentTarget.querySelector("input");
-    if (input && input.checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
-
   //handleSelectPlatform of Platform filter
   const handleSelectPlatform = (id: number) => {
     if (id) {
@@ -119,7 +109,6 @@ function App() {
         <ColorModeProvider>
           <Header
             theme={theme}
-            onChangeTheme={(event) => handleClick(event)}
             searchOnChange={handleSearch}
             searchKeyword={searchKeyword}
           />
