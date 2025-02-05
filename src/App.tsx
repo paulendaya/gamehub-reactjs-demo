@@ -14,7 +14,6 @@ import usePlatforms from "./hooks/usePlatforms";
 
 function App() {
   const { games, errorsGames, isLoadingGames } = useGames();
-  const { genres, errorsGenres, isLoadingGenres } = useGenres();
   const { platforms, errorsPlatforms, isLoadingPlatforms } = usePlatforms();
 
   const [selectedSorter, setSorter] = useState("name");
@@ -71,7 +70,7 @@ function App() {
   };
 
   //handleSelectGenre of Genre filter
-  const handleSelectGenre = (id: number) => {
+  /* const handleSelectGenre = (id: number) => {
     if (id) {
       genres.forEach((genre) => {
         if (genre.id === id) setGenre(genre);
@@ -79,7 +78,7 @@ function App() {
     } else {
       setGenre(null);
     }
-  };
+  }; */
 
   //handleSelectPlatform of Platform filter
   const handleSearch = (value: string = "") => {
@@ -94,21 +93,16 @@ function App() {
 
           <div className="row mt-4">
             <div className="col-md-3 d-md-block d-none">
-              {errorsGenres.map((error) => (
-                <p className="text-danger">{error}</p>
-              ))}
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
-                genres={genres}
                 onClick={(genre) => {
                   setGenre(genre);
                 }}
                 selectedGenre={selectedGenre}
-                isLoading={isLoadingGenres}
               />
             </div>
             <div className="col-md-9">
-              {errorsGenres.map((error) => (
+              {errorsGames.map((error) => (
                 <p className="text-danger">{error}</p>
               ))}
               <h1>
@@ -117,13 +111,12 @@ function App() {
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
-                    <GenreFilter
-                      genres={genres}
+                    {/* <GenreFilter
                       selectedGenre={selectedGenre}
                       onChange={(id) => {
                         handleSelectGenre(id);
                       }}
-                    />
+                    /> */}
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <PlatformsFilter
