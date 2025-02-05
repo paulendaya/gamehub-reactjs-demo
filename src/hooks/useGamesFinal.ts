@@ -26,7 +26,7 @@ const useGamesFinal = () => {
 
         }, []);
 
-        return {games, errorsGames, isLoadingGames, setGames,  setErrorGames};
+        return {games, errorsGames, isLoadingGames};
 
 }
 
