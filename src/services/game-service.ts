@@ -96,4 +96,4 @@ class GameService {
 
 }
 
-export default new GameService(150, [], [], 'name', '');
+export default new GameService(170, [], [], 'name', '');

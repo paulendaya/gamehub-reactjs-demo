@@ -10,10 +10,12 @@ import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
 import useGamesFinal from "./hooks/useGamesFinal";
+import useGenres from "./hooks/useGenres";
 
 function App() {
   const { games, errorsGames, isLoadingGames } = useGamesFinal();
-  const { genres, platforms, errors, isLoading } = useGames();
+  const { genres, errorsGenres, isLoadingGenres } = useGenres();
+  const { platforms, errors, isLoading } = useGames();
 
   const [theme, setTheme] = useState("dark");
   const [selectedSorter, setSorter] = useState("name");
@@ -131,7 +133,7 @@ function App() {
                   setGenre(genre);
                 }}
                 selectedGenre={selectedGenre}
-                isLoading={isLoading}
+                isLoading={isLoadingGenres}
               />
             </div>
             <div className="col-md-9">
