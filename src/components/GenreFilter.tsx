@@ -1,6 +1,5 @@
 import { Genre } from "@/services/game-service";
 import { NativeSelectField, NativeSelectRoot } from "./ui/native-select";
-import useGenres from "@/hooks/useGenres";
 
 interface Props {
   genres: Genre[];
