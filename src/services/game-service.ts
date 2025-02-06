@@ -41,6 +41,12 @@ export interface PlatformResults {
   results: Platform[];
 }
 
+
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 class GameService {
 
   pageSize = 40;
