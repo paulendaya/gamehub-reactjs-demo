@@ -16,19 +16,6 @@ function App() {
   const [selectedGenre, setGenre] = useState<Genre | null>(null);
 
   //handleSelectPlatform of Platform filter
-  /* const handleSelectPlatform = (id: number) => {
-    if (id) {
-      setPlatform(id);
-      platforms.forEach((platform) => {
-        if (platform.id === id) setPlatformName(platform.name);
-      });
-    } else {
-      setPlatform(0);
-      setPlatformName("");
-    }
-  }; */
-
-  //handleSelectPlatform of Platform filter
   const handleSearch = (value: string = "") => {
     setSearchKeyword(value);
   };
@@ -51,7 +38,7 @@ function App() {
             </div>
             <div className="col-md-9">
               <h1>
-                {selectedPlatformName} {selectedGenre?.name} Games
+                {selectedPlatform?.name} {selectedGenre?.name} Games
               </h1>
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
@@ -64,14 +51,10 @@ function App() {
                     /> */}
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
-                    {/* <PlatformsFilter
-                      platforms={platforms}
+                    <PlatformsFilter
                       selectedPlatform={selectedPlatform}
-                      onChange={(id) => {
-                        handleSelectPlatform(id);
-                      }}
-                    /> */}
-                    <PlatformsFilter />
+                      onChange={(platform) => setPlatform(platform)}
+                    />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <GameSorter
