@@ -7,12 +7,16 @@ import PlatformsFilter from "./components/PlatformsFilter";
 import GameSorter from "./components/GameSorter";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
+import GenreFilter from "./components/GenreFilter";
+import useGenres from "./hooks/useGenres";
 
 function App() {
+
+  const { data: genres, isLoading: isLoadingGenres } = useGenres();
+  
   const [selectedSorter, setSorter] = useState("name");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedPlatform, setPlatform] = useState<Platform | null>(null);
-  const [selectedPlatformName, setPlatformName] = useState("");
   const [selectedGenre, setGenre] = useState<Genre | null>(null);
 
   //handleSelectPlatform of Platform filter
@@ -30,10 +34,10 @@ function App() {
             <div className="col-md-3 d-md-block d-none">
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
-                onClick={(genre) => {
-                  setGenre(genre);
-                }}
+                genres={genres}
+                onClick={(genre) => setGenre(genre)}
                 selectedGenre={selectedGenre}
+                isLoadingGenres={isLoadingGenres}
               />
             </div>
             <div className="col-md-9">
@@ -43,12 +47,11 @@ function App() {
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
-                    {/* <GenreFilter
+                    <GenreFilter
+                      genres = {genres}
                       selectedGenre={selectedGenre}
-                      onChange={(id) => {
-                        handleSelectGenre(id);
-                      }}
-                    /> */}
+                      onChange={(genre) => setGenre(genre)}
+                    />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <PlatformsFilter
