@@ -67,7 +67,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <GameList selectedGenre={selectedGenre} />
+              <GameList selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
             </div>
           </div>
         </ColorModeProvider>
