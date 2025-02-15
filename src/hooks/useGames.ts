@@ -8,7 +8,7 @@ const useGames = (gameQuery: GameQuery) =>
                 {
                     genres: gameQuery.genre?.id, 
                     parent_platforms: gameQuery.platform?.id,
-                    ordering: gameQuery.ordering,
+                    ordering: gameQuery?.ordering,
                 }
         }, [gameQuery]);
 

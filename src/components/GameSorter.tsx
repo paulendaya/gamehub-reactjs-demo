@@ -19,6 +19,8 @@ const GameSorter = ({ selectedSorter, onChange }: Props) => {
         >
           <option value="name">Name ASC</option>
           <option value="-name">Name DESC</option>
+          <option value="added">Added ASC</option>
+          <option value="-added">Added DESC</option>
           <option value="rating">Rating ASC</option>
           <option value="-rating">Rating DESC</option>
           <option value="metacritic">Metacritic ASC</option>
