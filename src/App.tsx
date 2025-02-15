@@ -62,7 +62,7 @@ function App() {
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <GameSorter
-                      selectedSorter={gameQuery.ordering || "name"}
+                      selectedSorter={gameQuery.ordering}
                       onChange={(ordering) =>
                         setGameQuery({ ...gameQuery, ordering })
                       }
