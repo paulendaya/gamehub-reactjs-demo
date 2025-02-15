@@ -12,8 +12,6 @@ import useGenres from "./hooks/useGenres";
 
 function App() {
   const { data: genres, isLoading: isLoadingGenres } = useGenres();
-
-  const [selectedSorter, setSorter] = useState("name");
   const [searchKeyword, setSearchKeyword] = useState("");
 
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -64,8 +62,10 @@ function App() {
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <GameSorter
-                      selectedSorter={selectedSorter}
-                      onChange={(sorter) => setSorter(sorter)}
+                      selectedSorter={gameQuery.ordering || "name"}
+                      onChange={(ordering) =>
+                        setGameQuery({ ...gameQuery, ordering })
+                      }
                     />
                   </div>
                 </div>
