@@ -5,7 +5,7 @@ import {
 
 interface Props {
   selectedSorter: string;
-  onChange: (sorter: string) => void;
+  onChange: (ordering: string) => void;
 }
 
 const GameSorter = ({ selectedSorter, onChange }: Props) => {
@@ -17,9 +17,12 @@ const GameSorter = ({ selectedSorter, onChange }: Props) => {
           value={selectedSorter}
           onChange={(e) => onChange(e.currentTarget.value)}
         >
-          <option value="name">Name</option>
-          <option value="rating">Rating</option>
-          <option value="metacritic">Metacritic</option>
+          <option value="name">Name ASC</option>
+          <option value="-name">Name DESC</option>
+          <option value="rating">Rating ASC</option>
+          <option value="-rating">Rating DESC</option>
+          <option value="metacritic">Metacritic ASC</option>
+          <option value="-metacritic">Metacritic DESC</option>
         </NativeSelectField>
       </NativeSelectRoot>
     </div>
