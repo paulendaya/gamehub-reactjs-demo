@@ -19,6 +19,27 @@ header form {
   flex-grow: 1;
 }
 
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.game-item {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3; /* Adjust the span based on your content needs */
+  min-width: 0;
+}
+
+.game-item .chakra-card__body {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  min-width: 0;
+}
+
 html.dark body {
   background: #333;
   color: white;
