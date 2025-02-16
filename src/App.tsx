@@ -25,7 +25,12 @@ function App() {
     <div>
       <ChakraProvider value={defaultSystem}>
         <ColorModeProvider>
-          <Header searchOnChange={handleSearch} searchKeyword={searchKeyword} />
+          <Header
+            searchOnChange={(keyword) =>
+              setGameQuery({ ...gameQuery, search: keyword })
+            }
+            searchKeyword={gameQuery.search}
+          />
 
           <div className="row mt-4">
             <div className="col-md-3 d-md-block d-none">
