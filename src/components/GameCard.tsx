@@ -13,14 +13,14 @@ const GameCard = ({ game }: Props) => {
     width: 600,
     height: 400,
   };
+  const imageUrl = () => {
+    if (!game.background_image) return "/elementor-placeholder-image.webp";
+    return getCroppedImageUrl(game.background_image, imageDimension);
+  };
   return (
     <div>
       <Card.Root maxW="sm" overflow="hidden">
-        <Image
-          src={getCroppedImageUrl(game.background_image, imageDimension)}
-          alt={game.name}
-          aspectRatio={16 / 12}
-        />
+        <Image src={imageUrl()} alt={game.name} aspectRatio={16 / 12} />
         <Card.Body gap="2">
           <div className="d-flex justify-content-between">
             <PlatformList
