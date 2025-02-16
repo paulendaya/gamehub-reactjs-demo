@@ -2,6 +2,7 @@ import { Game } from "@/services/game-service";
 import { Card, Image } from "@chakra-ui/react";
 import CriticScore from "./CriticScore";
 import PlatformList from "./PlatformList";
+import { RatingIcon } from "./RatingIcon";
 import getCroppedImageUrl from "@/services/image-url";
 
 interface Props {
@@ -29,8 +30,9 @@ const GameCard = ({ game }: Props) => {
             <CriticScore metacritic={game.metacritic} />
           </div>
           <Card.Title>{game.name}</Card.Title>
-
-          <h5 className="mt-0 pt-0">{game.rating}</h5>
+          <div>
+            <RatingIcon rating={game.rating} />
+          </div>
         </Card.Body>
       </Card.Root>
     </>
