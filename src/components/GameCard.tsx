@@ -14,7 +14,7 @@ const GameCard = ({ game }: Props) => {
     height: 400,
   };
   return (
-    <div>
+    <>
       <Card.Root maxW="sm" overflow="hidden">
         <Image
           src={getCroppedImageUrl(game.background_image, imageDimension)}
@@ -33,7 +33,7 @@ const GameCard = ({ game }: Props) => {
           <h5 className="mt-0 pt-0">{game.rating}</h5>
         </Card.Body>
       </Card.Root>
-    </div>
+    </>
   );
 };
 
