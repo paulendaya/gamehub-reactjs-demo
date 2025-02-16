@@ -4,6 +4,7 @@ import { Flex, Input } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { LuSearch } from "react-icons/lu";
 import { ColorModeButton, useColorMode } from "../ui/color-mode";
+import { useRef } from "react";
 
 interface Props {
   searchOnChange: (keyword: string) => void;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const Header = ({ searchOnChange, searchKeyword }: Props) => {
+  const searchRef = useRef<HTMLInputElement>(null);
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <header>
@@ -22,17 +24,27 @@ const Header = ({ searchOnChange, searchKeyword }: Props) => {
           fit="cover"
           alt="Game Hub"
         />
-        <InputGroup width="full" flex="1" startElement={<LuSearch />}>
-          <Input
-            size="lg"
-            placeholder="Search games"
-            color="white"
-            colorScheme="gray"
-            value={searchKeyword}
-            type="search"
-            onChange={(event) => searchOnChange(event.currentTarget.value)}
-          />
-        </InputGroup>
+        <form
+          action=""
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (searchRef.current) {
+              searchOnChange(searchRef.current.value);
+            }
+          }}
+        >
+          <InputGroup width="full" flex="1" startElement={<LuSearch />}>
+            <Input
+              size="lg"
+              placeholder="Search games"
+              color="white"
+              colorScheme="gray"
+              value={searchKeyword}
+              type="search"
+              ref={searchRef}
+            />
+          </InputGroup>
+        </form>
         <div className="d-md-block d-none">
           <Flex gap="3" align="center">
             <Switch
