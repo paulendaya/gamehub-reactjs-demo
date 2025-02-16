@@ -21,8 +21,8 @@ const GameSorter = ({ selectedSorter, onChange }: Props) => {
           <option value="-name">Name DESC</option>
           <option value="added">Added ASC</option>
           <option value="-added">Added DESC</option>
-          <option value="rating">Rating ASC</option>
-          <option value="-rating">Rating DESC</option>
+          <option value="rating">Rating (Lowest)</option>
+          <option value="-rating">Rating (Highest)</option>
           <option value="metacritic">Metacritic ASC</option>
           <option value="-metacritic">Metacritic DESC</option>
         </NativeSelectField>
