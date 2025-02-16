@@ -9,13 +9,11 @@ import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
 import useGenres from "./hooks/useGenres";
+import GameHeading from "./components/GameHeading";
 
 function App() {
   const { data: genres, isLoading: isLoadingGenres } = useGenres();
-  const [searchKeyword, setSearchKeyword] = useState("");
-
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
 
   return (
     <div>
@@ -39,9 +37,7 @@ function App() {
               />
             </div>
             <div className="col-md-9">
-              <h1>
-                {gameQuery.platform?.name} {gameQuery.genre?.name} Games
-              </h1>
+              <GameHeading gameQuery={gameQuery} />
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
