@@ -15,6 +15,9 @@
 .platforms-list {
   opacity: 0.6;
 }
+header form {
+  flex-grow: 1;
+}
 
 html.dark body {
   background: #333;
