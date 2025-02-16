@@ -16,10 +16,6 @@ function App() {
 
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
-  //handleSelectPlatform of Platform filter
-  const handleSearch = (value: string = "") => {
-    setSearchKeyword(value);
-  };
 
   return (
     <div>
