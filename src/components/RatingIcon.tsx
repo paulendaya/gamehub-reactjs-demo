@@ -10,15 +10,15 @@ export const RatingIcon = ({ rating }: RatingIconProps) => {
   const ratingConfig = {
     high: {
       threshold: 4,
-      color: "green.500",
+      color: "green",
       message: "Exceptional - Rating above 4",
     },
     medium: {
       threshold: 3,
-      color: "yellow.500",
+      color: "yellow",
       message: "Recommended - Rating between 3 and 4",
     },
-    low: { color: "red.500", message: "Skip - Rating below 3" },
+    low: { color: "red", message: "Skip - Rating below 3" },
   };
 
   const getRatingLevel = (rating: number) => {
@@ -36,12 +36,14 @@ export const RatingIcon = ({ rating }: RatingIconProps) => {
       positioning={{
         placement: "top",
       }}
+      openDelay={100}
+      closeDelay={100}
     >
-      <Button variant="ghost" size="sm">
-        <Icon color={color} boxSize={5}>
-          {rating > 0 ? <FaThumbsUp /> : <FaThumbsDown />}
-        </Icon>
-      </Button>
+      {rating > 0 ? (
+        <FaThumbsUp size={20} color={color} />
+      ) : (
+        <FaThumbsDown size={20} color={color} />
+      )}
     </Tooltip>
   );
   //TODO: fixed the following issue:
