@@ -46,9 +46,6 @@ export const RatingIcon = ({ rating }: RatingIconProps) => {
       )}
     </Tooltip>
   );
-  //TODO: fixed the following issue:
-  //hook.js:608 Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
-  //Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components Error Component Stack
 };
 
 export default RatingIcon;
