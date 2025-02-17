@@ -8,7 +8,7 @@ import { useRef } from "react";
 
 interface Props {
   searchOnChange: (keyword: string) => void;
-  searchKeyword: string;
+  searchKeyword?: string;
 }
 
 const Header = ({ searchOnChange, searchKeyword }: Props) => {
@@ -39,7 +39,6 @@ const Header = ({ searchOnChange, searchKeyword }: Props) => {
               placeholder="Search games"
               color="white"
               colorScheme="gray"
-              value={searchKeyword}
               type="search"
               ref={searchRef}
             />
