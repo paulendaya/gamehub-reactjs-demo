@@ -13,7 +13,7 @@ const GameList = ({ gameQuery }: Props) => {
   const localLoading = useLocalLoading(isLoading);
   return (
     <div className="game-grid">
-      {data.map((game) => (
+      {data?.results.map((game) => (
         <div key={game.id} className="game-item">
           {localLoading ? <GameCardLoader /> : <GameCard game={game} />}
         </div>
