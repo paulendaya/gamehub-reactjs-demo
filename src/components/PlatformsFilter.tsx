@@ -21,13 +21,13 @@ const PlatformsFilter = ({ selectedPlatform, onChange }: Props) => {
           value={selectedPlatform?.id} // Assuming selectedPlatform is an object with an id property
           onChange={(e) => {
             const selectedPlatformId = parseInt(e.currentTarget.value);
-            const selectedPlatform = data?.find(
+            const selectedPlatform = data?.results.find(
               (platform) => platform.id === selectedPlatformId
             );
             onChange(selectedPlatform ? selectedPlatform : null);
           }}
         >
-          {data?.map((platform) => (
+          {data?.results.map((platform) => (
             <option key={platform.id} value={platform.id}>
               {platform.name}
             </option>

@@ -5,7 +5,7 @@ import GenreItemLoader from "./GenreItemLoader";
 import useLocalLoading from "@/hooks/useLocalLoading";
 
 interface Props {
-  genres: Genre[] | undefined;
+  genres: Genre[];
   onClick: (genre: Genre) => void;
   selectedGenre: Genre | null;
   isLoadingGenres: boolean;
