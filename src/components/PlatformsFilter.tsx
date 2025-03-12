@@ -2,8 +2,7 @@ import {
   NativeSelectField,
   NativeSelectRoot,
 } from "@/components/ui/native-select";
-import usePlatforms from "@/hooks/usePlatforms";
-import { Platform } from "@/services/game-service";
+import usePlatforms, { Platform } from "@/hooks/usePlatforms";
 
 interface Props {
   selectedPlatform: Platform | null; // Change the type of selectedPlatform to Platform

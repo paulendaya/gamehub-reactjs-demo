@@ -1,4 +1,4 @@
-import { Platform } from "@/services/game-service";
+import { Platform } from "@/hooks/usePlatforms";
 import { BsNintendoSwitch } from "react-icons/bs";
 import {
   FaApple,

@@ -1,4 +1,4 @@
-import { Platform } from "@/services/game-service";
+import { Platform } from "../usePlatforms";
 import useData from "./useData";
 
 const usePlatforms = () => useData<Platform>('/platforms/lists/parents');

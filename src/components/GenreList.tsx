@@ -1,8 +1,8 @@
-import { Genre } from "@/services/game-service";
 import getCroppedImageUrl from "@/services/image-url";
 import { Button, Image, VStack } from "@chakra-ui/react";
 import GenreItemLoader from "./GenreItemLoader";
 import useLocalLoading from "@/hooks/useLocalLoading";
+import { Genre } from "@/hooks/useGenres";
 
 interface Props {
   genres: Genre[];

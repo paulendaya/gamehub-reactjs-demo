@@ -1,8 +1,7 @@
+import useGames, { GameQuery } from "@/hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardLoader from "./GameCardLoader";
 import useLocalLoading from "@/hooks/useLocalLoading";
-import useGames from "@/hooks/useGames";
-import { GameQuery, Genre, Platform } from "@/services/game-service";
 
 interface Props {
   gameQuery: GameQuery;

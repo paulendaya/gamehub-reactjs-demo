@@ -1,4 +1,3 @@
-import React from "react";
 import { Skeleton, SkeletonText } from "./ui/skeleton";
 
 const GameCardLoader = () => {

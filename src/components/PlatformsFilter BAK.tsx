@@ -1,8 +1,8 @@
-import { Platform } from "@/services/game-service";
 import {
   NativeSelectField,
   NativeSelectRoot,
 } from "@/components/ui/native-select";
+import { Platform } from "@/hooks/usePlatforms";
 
 interface Props {
   platforms: Platform[];

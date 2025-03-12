@@ -1,6 +1,9 @@
-import { ImageDimension } from "./game-service";
 import placeholderImage from '/assets/elementor-placeholder-image.webp';
 
+export interface ImageDimension {
+    width: number;
+    height: number;
+  }
 
 const getCroppedImageUrl = (url: string, dimension: ImageDimension) => {
     if (!url) return placeholderImage;

@@ -1,6 +1,26 @@
 import apiClient, { FetchResponse } from "@/services/api-client";
-import { Game, GameQuery } from "@/services/game-service";
 import { useQuery } from "@tanstack/react-query";
+import { Platform } from "./usePlatforms";
+import { Genre } from "./useGenres";
+
+
+export interface GameQuery {
+    genre: Genre | null;
+    platform: Platform | null;
+    ordering: string;
+    search: string;
+  }
+
+export interface Game {
+    id: number;
+    background_image: string;
+    slug: string;
+    name: string;
+    metacritic: number;
+    parent_platforms: {platform: Platform}[],
+    genres: [], 
+    rating: number;
+  }
 
 const useGames = (gameQuery: GameQuery) => 
     useQuery<FetchResponse<Game>, Error>({
@@ -17,7 +37,6 @@ const useGames = (gameQuery: GameQuery) =>
             })
                 .then((res) => res.data),
         staleTime: 24 * 60 * 60 * 1000, // 24h
-/*         initialData: genres */
     });
 
 export default useGames;

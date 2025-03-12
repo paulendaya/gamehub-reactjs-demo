@@ -1,6 +1,5 @@
-import { Button, Icon } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui/tooltip";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 
 interface RatingIconProps {
   rating: number;

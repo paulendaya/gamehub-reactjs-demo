@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "./components/header/Header";
 import GenreList from "./components/GenreList";
-import { GameQuery } from "./services/game-service";
 import GameList from "./components/GameList";
 import PlatformsFilter from "./components/PlatformsFilter";
 import GameSorter from "./components/GameSorter";
@@ -10,6 +9,7 @@ import { ColorModeProvider } from "./components/ui/color-mode";
 import GenreFilter from "./components/GenreFilter";
 import useGenres from "./hooks/useGenres";
 import GameHeading from "./components/GameHeading";
+import { GameQuery } from "./hooks/useGames";
 
 function App() {
   const { data: genres, isLoading: isLoadingGenres } = useGenres();

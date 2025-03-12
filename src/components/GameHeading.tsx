@@ -1,4 +1,4 @@
-import { GameQuery } from "../services/game-service";
+import { GameQuery } from "@/hooks/useGames";
 
 interface Props {
   gameQuery: GameQuery;

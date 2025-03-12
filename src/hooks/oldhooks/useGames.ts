@@ -1,4 +1,5 @@
-import { Game, GameQuery, Genre, Platform } from "@/services/game-service";
+
+import { Game, GameQuery } from "../useGames";
 import useData from "./useData";
 
 const useGames = (gameQuery: GameQuery) => 

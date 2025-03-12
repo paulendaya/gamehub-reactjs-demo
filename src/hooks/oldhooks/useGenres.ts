@@ -1,4 +1,4 @@
-import { Genre } from "@/services/game-service";
+import { Genre } from "../useGenres";
 import useData from "./useData";
 
 const useGenres = () => useData<Genre>('/genres');
