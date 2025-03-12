@@ -11,8 +11,17 @@ interface Props {
   isLoadingGenres: boolean;
 }
 
+<<<<<<< HEAD
 const GenreList = ({ genres, onClick, selectedGenre, isLoadingGenres }: Props) => {
 
+=======
+const GenreList = ({
+  genres,
+  onClick,
+  selectedGenre,
+  isLoadingGenres,
+}: Props) => {
+>>>>>>> master
   const localLoading = useLocalLoading(isLoadingGenres);
 
   const imageDimension = {
@@ -24,7 +33,11 @@ const GenreList = ({ genres, onClick, selectedGenre, isLoadingGenres }: Props) =
     return (
       <>
         <VStack gap={1} align={"start"}>
+<<<<<<< HEAD
           {genres.map((genre) => (
+=======
+          {genres?.map((genre) => (
+>>>>>>> master
             <GenreItemLoader key={genre.id} />
           ))}
         </VStack>
@@ -33,7 +46,11 @@ const GenreList = ({ genres, onClick, selectedGenre, isLoadingGenres }: Props) =
   }
   return (
     <>
+<<<<<<< HEAD
       {genres.map((genre) => (
+=======
+      {genres?.map((genre) => (
+>>>>>>> master
         <Button
           className="genre-item d-flex gap-2 mb-4 px-0"
           data-selected={genre.id == selectedGenre?.id ? true : false}

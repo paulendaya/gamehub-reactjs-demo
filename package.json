@@ -11,6 +11,11 @@
   "dependencies": {
     "@chakra-ui/react": "^3.3.1",
     "@emotion/react": "^11.14.0",
+<<<<<<< HEAD
+=======
+    "@tanstack/react-query": "4.28",
+    "@tanstack/react-query-devtools": "4.28",
+>>>>>>> master
     "axios": "^1.7.9",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.3",

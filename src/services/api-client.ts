@@ -1,5 +1,13 @@
 import axios, {CanceledError} from "axios";
 
+<<<<<<< HEAD
+=======
+export interface FetchResponse<T> {
+    count: number;
+    results: T[];
+}
+
+>>>>>>> master
 const apiClient = axios.create({
     baseURL: 'https://api.rawg.io/api',
     params: {
