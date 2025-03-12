@@ -1,4 +1,4 @@
-import apiClient from "./api-client";
+/* import apiClient from "./api-client";
 
 interface Entity {
     id: number;
@@ -36,4 +36,4 @@ class HttpService {
 
 const create = (endpoint: string) => new HttpService(endpoint);
 
-export default create;
+export default create; */
