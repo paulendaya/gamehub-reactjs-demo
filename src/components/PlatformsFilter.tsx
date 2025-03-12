@@ -21,6 +21,7 @@ const PlatformsFilter = ({ selectedPlatform, onChange }: Props) => {
           value={selectedPlatform?.id} // Assuming selectedPlatform is an object with an id property
           onChange={(e) => {
             const selectedPlatformId = parseInt(e.currentTarget.value);
+            console.log(selectedPlatformId);
             const selectedPlatform = data?.results.find(
               (platform) => platform.id === selectedPlatformId
             );
