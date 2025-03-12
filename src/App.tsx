@@ -30,11 +30,7 @@ function App() {
             <div className="col-md-3 d-md-block d-none">
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
-<<<<<<< HEAD
-                genres={genres}
-=======
                 genres={genres.results}
->>>>>>> master
                 onClick={(genre) => setGameQuery({ ...gameQuery, genre })}
                 selectedGenre={gameQuery.genre}
                 isLoadingGenres={isLoadingGenres}
@@ -46,11 +42,7 @@ function App() {
                 <div className="d-flex gap-3 flex-md-row flex-column">
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
                     <GenreFilter
-<<<<<<< HEAD
-                      genres={genres}
-=======
                       genres={genres.results}
->>>>>>> master
                       selectedGenre={gameQuery.genre}
                       onChange={(genre) =>
                         setGameQuery({ ...gameQuery, genre })

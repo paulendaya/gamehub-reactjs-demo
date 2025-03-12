@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import { Platform } from "@/services/game-service";
-import useData from "./useData";
-
-const usePlatforms = () => useData<Platform>('/platforms/lists/parents');
-=======
 import apiClient, { FetchResponse } from "@/services/api-client";
 import { Platform } from "@/services/game-service";
 import { useQuery } from "@tanstack/react-query";
@@ -18,6 +12,5 @@ const usePlatforms = () => useQuery<FetchResponse<Platform>, Error>({
     staleTime: 24 * 60 * 60 * 1000, // 24h
     initialData: platforms
 });
->>>>>>> master
 
 export default usePlatforms;
