@@ -3,11 +3,11 @@ import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
 
 interface FetchResponse<T> {
-    count: number;
-    results: T[];
+  count: number;
+  results: T[];
 }
 
-const useData = <T>(endpoint:string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
+/* const useData = <T>(endpoint:string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
     const [data, setData] = useState<T[]>([]);
     const [errors, setErrors] = useState<String[]>([]);
     const [isLoading, setLoading] = useState(true);
@@ -37,4 +37,4 @@ const useData = <T>(endpoint:string, requestConfig?: AxiosRequestConfig, deps?: 
 
 }
 
-export default useData;
+export default useData; */

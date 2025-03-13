@@ -1,7 +1,6 @@
 import APIClient, { FetchResponse } from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import platforms from "@/data/platforms";
-import platformService from "@/services/platform-service";
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
 

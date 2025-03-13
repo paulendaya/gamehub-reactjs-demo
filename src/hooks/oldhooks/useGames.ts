@@ -1,4 +1,4 @@
-
+/* 
 import { Game, GameQuery } from "../useGames";
 import useData from "./useData";
 
@@ -14,4 +14,4 @@ const useGames = (gameQuery: GameQuery) =>
                 }
         }, [gameQuery]);
 
-export default useGames;
+export default useGames; */
