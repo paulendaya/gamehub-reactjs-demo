@@ -3,8 +3,8 @@ import { NativeSelectField, NativeSelectRoot } from "./ui/native-select";
 
 interface Props {
   genres: Genre[] | undefined;
-  selectedGenreId: number | null;
-  onChange: (selectedGenreId: number | null) => void;
+  selectedGenreId?: number;
+  onChange: (selectedGenreId?: number) => void;
 }
 
 const GenreFilter = ({ genres, selectedGenreId, onChange }: Props) => {

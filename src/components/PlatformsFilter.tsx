@@ -5,8 +5,8 @@ import {
 import usePlatforms, { Platform } from "@/hooks/usePlatforms";
 
 interface Props {
-  selectedPlatformId: number | null; // Change the type of selectedPlatform to Platform
-  onChange: (platformId: number | null) => void; // Change the type of onChange to accept a Platform object
+  selectedPlatformId?: number; // Change the type of selectedPlatform to Platform
+  onChange: (platformId?: number) => void; // Change the type of onChange to accept a Platform object
 }
 
 const PlatformsFilter = ({ selectedPlatformId, onChange }: Props) => {

@@ -34,7 +34,7 @@ function App() {
                 onClick={(genre) =>
                   setGameQuery({ ...gameQuery, genreId: genre.id })
                 }
-                selectedGenre={gameQuery.genreId}
+                selectedGenreId={gameQuery.genreId}
                 isLoadingGenres={isLoadingGenres}
               />
             </div>

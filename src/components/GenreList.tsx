@@ -7,14 +7,14 @@ import { Genre } from "@/hooks/useGenres";
 interface Props {
   genres: Genre[];
   onClick: (genre: Genre) => void;
-  selectedGenre: number | null;
+  selectedGenreId?: number;
   isLoadingGenres: boolean;
 }
 
 const GenreList = ({
   genres,
   onClick,
-  selectedGenre,
+  selectedGenreId,
   isLoadingGenres,
 }: Props) => {
   const localLoading = useLocalLoading(isLoadingGenres);
@@ -40,7 +40,7 @@ const GenreList = ({
       {genres?.map((genre) => (
         <Button
           className="genre-item d-flex gap-2 mb-4 px-0"
-          data-selected={genre.id == selectedGenre ? true : false}
+          data-selected={genre.id == selectedGenreId ? true : false}
           variant="ghost"
           key={genre.id}
           onClick={(event) => onClick(genre)}
