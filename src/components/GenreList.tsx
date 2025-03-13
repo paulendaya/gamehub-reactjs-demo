@@ -7,7 +7,7 @@ import { Genre } from "@/hooks/useGenres";
 interface Props {
   genres: Genre[];
   onClick: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenre: number | null;
   isLoadingGenres: boolean;
 }
 
@@ -40,7 +40,7 @@ const GenreList = ({
       {genres?.map((genre) => (
         <Button
           className="genre-item d-flex gap-2 mb-4 px-0"
-          data-selected={genre.id == selectedGenre?.id ? true : false}
+          data-selected={genre.id == selectedGenre ? true : false}
           variant="ghost"
           key={genre.id}
           onClick={(event) => onClick(genre)}

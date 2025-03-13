@@ -31,8 +31,10 @@ function App() {
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
                 genres={genres.results}
-                onClick={(genre) => setGameQuery({ ...gameQuery, genre })}
-                selectedGenre={gameQuery.genre}
+                onClick={(genre) =>
+                  setGameQuery({ ...gameQuery, genreId: genre.id })
+                }
+                selectedGenre={gameQuery.genreId}
                 isLoadingGenres={isLoadingGenres}
               />
             </div>
@@ -43,18 +45,18 @@ function App() {
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
                     <GenreFilter
                       genres={genres.results}
-                      selectedGenre={gameQuery.genre}
-                      onChange={(genre) =>
-                        setGameQuery({ ...gameQuery, genre })
+                      selectedGenreId={gameQuery.genreId}
+                      onChange={(selectedGenreId) =>
+                        setGameQuery({ ...gameQuery, genreId: selectedGenreId })
                       }
                     />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <PlatformsFilter
-                      selectedPlatform={gameQuery.platform}
-                      onChange={(platform) =>
-                        setGameQuery({ ...gameQuery, platform })
-                      }
+                      selectedPlatformId={gameQuery.platformId}
+                      onChange={(platformId) => {
+                        setGameQuery({ ...gameQuery, platformId: platformId });
+                      }}
                     />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">

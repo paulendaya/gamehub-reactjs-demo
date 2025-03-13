@@ -14,7 +14,7 @@ const GameList = ({ gameQuery }: Props) => {
   const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGames(gameQuery);
   const localLoading = useLocalLoading(isLoading);
-
+  console.log(gameQuery);
   const fetchedGamesCount =
     data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0; //use reduce to sum all pages in data.pages
 

@@ -3,24 +3,18 @@ import { NativeSelectField, NativeSelectRoot } from "./ui/native-select";
 
 interface Props {
   genres: Genre[] | undefined;
-  selectedGenre: Genre | null;
-  onChange: (genre: Genre | null) => void;
+  selectedGenreId: number | null;
+  onChange: (selectedGenreId: number | null) => void;
 }
 
-const GenreFilter = ({ genres, selectedGenre, onChange }: Props) => {
+const GenreFilter = ({ genres, selectedGenreId, onChange }: Props) => {
   return (
     <div>
       <NativeSelectRoot variant="subtle" key="subtle">
         <NativeSelectField
           placeholder="Select Genre"
-          value={selectedGenre?.id}
-          onChange={(e) => {
-            const selectedGenreId = parseInt(e.currentTarget.value);
-            const selectedGenre = genres?.find(
-              (genre) => genre.id === selectedGenreId
-            );
-            onChange(selectedGenre ? selectedGenre : null);
-          }}
+          value={selectedGenreId ?? ""}
+          onChange={(e) => onChange(parseInt(e.currentTarget.value))}
         >
           {genres?.map((genre) => (
             <option key={genre.id} value={genre.id}>
