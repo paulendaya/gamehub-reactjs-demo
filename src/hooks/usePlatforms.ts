@@ -1,5 +1,5 @@
 import APIClient, { FetchResponse } from "@/services/api-client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import platforms from "@/data/platforms";
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
@@ -18,4 +18,13 @@ const usePlatforms = () =>
     initialData: platforms,
   });
 
+const usePlatform = (id: number | undefined) => {
+  const queryClient = useQueryClient();
+  const platforms = queryClient.getQueryData<FetchResponse<Platform>>([
+    "platforms",
+  ]); //Access the query data using the query key "platforms" by accessing the queryClient object
+  return platforms?.results.find((platform) => platform.id == id);
+};
+
+export { usePlatform };
 export default usePlatforms;
