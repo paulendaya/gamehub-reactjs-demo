@@ -4,7 +4,7 @@ import {
 } from "@/components/ui/native-select";
 
 interface Props {
-  selectedSorter: string;
+  selectedSorter?: string;
   onChange: (ordering: string) => void;
 }
 

@@ -1,28 +1,33 @@
-import { useState } from "react";
-import Header from "./components/header/Header";
-import GenreList from "./components/GenreList";
-import GameList from "./components/GameList";
-import PlatformsFilter from "./components/PlatformsFilter";
-import GameSorter from "./components/GameSorter";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
-import { ColorModeProvider } from "./components/ui/color-mode";
-import GenreFilter from "./components/GenreFilter";
-import useGenres from "./hooks/useGenres";
 import GameHeading from "./components/GameHeading";
-import { GameQuery } from "./hooks/useGames";
+import GameList from "./components/GameList";
+import GameSorter from "./components/GameSorter";
+import GenreFilter from "./components/GenreFilter";
+import GenreList from "./components/GenreList";
+import Header from "./components/header/Header";
+import PlatformsFilter from "./components/PlatformsFilter";
+import { ColorModeProvider } from "./components/ui/color-mode";
+import useGenres from "./hooks/useGenres";
+import useGameQueryStore from "./stores/gameQueryStore";
 
 function App() {
   const { data: genres, isLoading: isLoadingGenres } = useGenres();
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  //const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const {
+    gameQuery,
+    setGenreId,
+    setPlatformId,
+    setSearchKeyword,
+    setOrdering,
+  } = useGameQueryStore();
+  //console.log(gameQuery);
 
   return (
     <div>
       <ChakraProvider value={defaultSystem}>
         <ColorModeProvider>
           <Header
-            searchOnChange={(keyword) =>
-              setGameQuery({ ...gameQuery, search: keyword })
-            }
+            searchOnChange={(keyword) => setSearchKeyword(keyword)}
             searchKeyword={gameQuery.search}
           />
 
@@ -31,23 +36,21 @@ function App() {
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
                 genres={genres.results}
-                onClick={(genre) =>
-                  setGameQuery({ ...gameQuery, genreId: genre.id })
-                }
+                onClick={(genre) => setGenreId(genre.id)}
                 selectedGenreId={gameQuery.genreId}
                 isLoadingGenres={isLoadingGenres}
               />
             </div>
             <div className="col-md-9">
-              <GameHeading gameQuery={gameQuery} />
+              <GameHeading />
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
                     <GenreFilter
                       genres={genres.results}
-                      selectedGenreId={gameQuery.genreId}
+                      selectedGenreId={gameQuery?.genreId}
                       onChange={(selectedGenreId) =>
-                        setGameQuery({ ...gameQuery, genreId: selectedGenreId })
+                        setGenreId(selectedGenreId)
                       }
                     />
                   </div>
@@ -55,21 +58,19 @@ function App() {
                     <PlatformsFilter
                       selectedPlatformId={gameQuery.platformId}
                       onChange={(platformId) => {
-                        setGameQuery({ ...gameQuery, platformId: platformId });
+                        setPlatformId(platformId);
                       }}
                     />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
                     <GameSorter
                       selectedSorter={gameQuery.ordering}
-                      onChange={(ordering) =>
-                        setGameQuery({ ...gameQuery, ordering })
-                      }
+                      onChange={(ordering) => setOrdering(ordering)}
                     />
                   </div>
                 </div>
               </div>
-              <GameList gameQuery={gameQuery} />
+              <GameList />
             </div>
           </div>
         </ColorModeProvider>

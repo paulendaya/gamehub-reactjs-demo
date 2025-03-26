@@ -1,16 +1,13 @@
-import { GameQuery } from "@/hooks/useGames";
 import { useGenre } from "@/hooks/useGenres";
 import { usePlatform } from "@/hooks/usePlatforms";
-import { FetchResponse } from "@/services/api-client";
-import { useQueryClient } from "@tanstack/react-query";
+import useGameQueryStore from "@/stores/gameQueryStore";
 
-interface Props {
-  gameQuery: GameQuery;
-}
+const GameHeading = () => {
+  const { platformId, genreId } = useGameQueryStore((s) => s.gameQuery);
 
-const GameHeading = ({ gameQuery }: Props) => {
-  const platform = usePlatform(gameQuery.platformId);
-  const genre = useGenre(gameQuery.genreId);
+  console.log("Re-rendering GameHeading");
+  const platform = usePlatform(platformId);
+  const genre = useGenre(genreId);
 
   const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
   return <h1>{heading}</h1>;

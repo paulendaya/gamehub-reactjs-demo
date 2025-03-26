@@ -7,7 +7,7 @@ import { Genre } from "@/hooks/useGenres";
 interface Props {
   genres: Genre[];
   onClick: (genre: Genre) => void;
-  selectedGenreId?: number;
+  selectedGenreId?: number | null;
   isLoadingGenres: boolean;
 }
 

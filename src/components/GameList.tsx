@@ -1,20 +1,17 @@
-import useGames, { GameQuery } from "@/hooks/useGames";
+import useGames from "@/hooks/useGames";
+import useLocalLoading from "@/hooks/useLocalLoading";
+import { Spinner } from "@chakra-ui/react";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from "./GameCard";
 import GameCardLoader from "./GameCardLoader";
-import useLocalLoading from "@/hooks/useLocalLoading";
-import React from "react";
-import { Spinner } from "@chakra-ui/react";
-import InfiniteScroll from "react-infinite-scroll-component";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameList = ({ gameQuery }: Props) => {
+const GameList = () => {
   const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useGames(gameQuery);
+    useGames();
   const localLoading = useLocalLoading(isLoading);
-  console.log(gameQuery);
+
+  //console.log(gameQuery);
   const fetchedGamesCount =
     data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0; //use reduce to sum all pages in data.pages
 

@@ -8,7 +8,7 @@ import { useRef } from "react";
 
 interface Props {
   searchOnChange: (keyword: string) => void;
-  searchKeyword?: string;
+  searchKeyword?: string | null;
 }
 
 const Header = ({ searchOnChange, searchKeyword }: Props) => {
