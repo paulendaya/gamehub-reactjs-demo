@@ -3,20 +3,16 @@ import { Button, Image, VStack } from "@chakra-ui/react";
 import GenreItemLoader from "./GenreItemLoader";
 import useLocalLoading from "@/hooks/useLocalLoading";
 import { Genre } from "@/hooks/useGenres";
+import useGameQueryStore from "@/stores/gameQueryStore";
 
 interface Props {
   genres: Genre[];
-  onClick: (genre: Genre) => void;
-  selectedGenreId?: number | null;
   isLoadingGenres: boolean;
 }
 
-const GenreList = ({
-  genres,
-  onClick,
-  selectedGenreId,
-  isLoadingGenres,
-}: Props) => {
+const GenreList = ({ genres, isLoadingGenres }: Props) => {
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const localLoading = useLocalLoading(isLoadingGenres);
 
   const imageDimension = {
@@ -43,7 +39,7 @@ const GenreList = ({
           data-selected={genre.id == selectedGenreId ? true : false}
           variant="ghost"
           key={genre.id}
-          onClick={(event) => onClick(genre)}
+          onClick={(event) => setGenreId(genre.id)}
         >
           <Image
             rounded="md"

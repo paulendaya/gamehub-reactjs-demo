@@ -2,20 +2,18 @@ import {
   NativeSelectField,
   NativeSelectRoot,
 } from "@/components/ui/native-select";
+import useGameQueryStore from "@/stores/gameQueryStore";
 
-interface Props {
-  selectedSorter?: string;
-  onChange: (ordering: string) => void;
-}
-
-const GameSorter = ({ selectedSorter, onChange }: Props) => {
+const GameSorter = () => {
+  const setOrdering = useGameQueryStore((s) => s.setOrdering);
+  const selectedOrdering = useGameQueryStore((s) => s.gameQuery.ordering);
   return (
     <div>
       <NativeSelectRoot variant="subtle" key="subtle">
         <NativeSelectField
           placeholder="Order by"
-          value={selectedSorter}
-          onChange={(e) => onChange(e.currentTarget.value)}
+          value={selectedOrdering}
+          onChange={(e) => setOrdering(e.currentTarget.value)}
         >
           <option value="name">Name ASC</option>
           <option value="-name">Name DESC</option>

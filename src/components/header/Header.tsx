@@ -5,14 +5,11 @@ import { Image } from "@chakra-ui/react";
 import { LuSearch } from "react-icons/lu";
 import { ColorModeButton, useColorMode } from "../ui/color-mode";
 import { useRef } from "react";
+import useGameQueryStore from "@/stores/gameQueryStore";
 
-interface Props {
-  searchOnChange: (keyword: string) => void;
-  searchKeyword?: string | null;
-}
-
-const Header = ({ searchOnChange, searchKeyword }: Props) => {
+const Header = () => {
   const searchRef = useRef<HTMLInputElement>(null);
+  const setSearchKeyword = useGameQueryStore((s) => s.setSearchKeyword);
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <header>
@@ -29,7 +26,7 @@ const Header = ({ searchOnChange, searchKeyword }: Props) => {
           onSubmit={(event) => {
             event.preventDefault();
             if (searchRef.current) {
-              searchOnChange(searchRef.current.value);
+              setSearchKeyword(searchRef.current.value);
             }
           }}
         >

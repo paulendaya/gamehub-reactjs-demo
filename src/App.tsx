@@ -26,18 +26,13 @@ function App() {
     <div>
       <ChakraProvider value={defaultSystem}>
         <ColorModeProvider>
-          <Header
-            searchOnChange={(keyword) => setSearchKeyword(keyword)}
-            searchKeyword={gameQuery.search}
-          />
+          <Header />
 
           <div className="row mt-4">
             <div className="col-md-3 d-md-block d-none">
               <h3 className="text-start mb-4">Genres</h3>
               <GenreList
                 genres={genres.results}
-                onClick={(genre) => setGenreId(genre.id)}
-                selectedGenreId={gameQuery.genreId}
                 isLoadingGenres={isLoadingGenres}
               />
             </div>
@@ -46,27 +41,13 @@ function App() {
               <div className="my-3">
                 <div className="d-flex gap-3 flex-md-row flex-column">
                   <div className="d-md-none d-block flex-md-grow-0 flex-grow-1">
-                    <GenreFilter
-                      genres={genres.results}
-                      selectedGenreId={gameQuery?.genreId}
-                      onChange={(selectedGenreId) =>
-                        setGenreId(selectedGenreId)
-                      }
-                    />
+                    <GenreFilter genres={genres.results} />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
-                    <PlatformsFilter
-                      selectedPlatformId={gameQuery.platformId}
-                      onChange={(platformId) => {
-                        setPlatformId(platformId);
-                      }}
-                    />
+                    <PlatformsFilter />
                   </div>
                   <div className="flex-md-grow-0 flex-grow-1">
-                    <GameSorter
-                      selectedSorter={gameQuery.ordering}
-                      onChange={(ordering) => setOrdering(ordering)}
-                    />
+                    <GameSorter />
                   </div>
                 </div>
               </div>

@@ -3,22 +3,19 @@ import {
   NativeSelectRoot,
 } from "@/components/ui/native-select";
 import usePlatforms, { Platform } from "@/hooks/usePlatforms";
+import useGameQueryStore from "@/stores/gameQueryStore";
 
-interface Props {
-  selectedPlatformId?: number | null; // Change the type of selectedPlatform to Platform
-  onChange: (platformId?: number) => void; // Change the type of onChange to accept a Platform object
-}
-
-const PlatformsFilter = ({ selectedPlatformId, onChange }: Props) => {
+const PlatformsFilter = () => {
   const { data } = usePlatforms();
-
+  const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
   return (
     <div>
       <NativeSelectRoot variant="subtle" key="subtle">
         <NativeSelectField
           placeholder="Select Platform"
           value={selectedPlatformId ?? ""} // Assuming selectedPlatform is an object with an id property
-          onChange={(e) => onChange(parseInt(e.currentTarget.value))}
+          onChange={(e) => setPlatformId(parseInt(e.currentTarget.value))}
         >
           {data?.results.map((platform) => (
             <option key={platform.id} value={platform.id}>
