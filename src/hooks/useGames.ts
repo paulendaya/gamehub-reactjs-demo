@@ -15,6 +15,7 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
   genres: [];
   rating: number;
+  description_raw: string;
 }
 
 const useGames = (gameQuery = useGameQueryStore((s) => s.gameQuery)) =>

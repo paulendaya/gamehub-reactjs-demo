@@ -4,19 +4,28 @@ import PlatformList from "./PlatformList";
 import { RatingIcon } from "./RatingIcon";
 import getCroppedImageUrl from "@/services/image-url";
 import { Game } from "@/hooks/useGames";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  const navigate = useNavigate();
   const imageDimension = {
     width: 600,
     height: 400,
   };
   return (
     <>
-      <Card.Root maxW="sm" overflow="hidden">
+      <Card.Root
+        maxW="sm"
+        overflow="hidden"
+        _hover={{ scale: "1.05" }}
+        transition={"all .2s ease-in-out"}
+        onClick={() => navigate(`/games/${game.id}`)}
+        cursor={"pointer"}
+      >
         <Image
           src={getCroppedImageUrl(game.background_image, imageDimension)}
           alt={game.name}
