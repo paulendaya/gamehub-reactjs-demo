@@ -1,4 +1,4 @@
-import ErrorPage from "@/components/ErrorPage";
+import ErrorPage from "@/pages/ErrorPage";
 import GameDetail from "@/pages/GameDetail";
 import Games from "@/pages/HomePage";
 import Layout from "@/pages/Layout";
