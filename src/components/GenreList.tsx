@@ -2,7 +2,7 @@ import getCroppedImageUrl from "@/services/image-url";
 import { Button, Image, VStack } from "@chakra-ui/react";
 import GenreItemLoader from "./GenreItemLoader";
 import useLocalLoading from "@/hooks/useLocalLoading";
-import { Genre } from "@/hooks/useGenres";
+import { Genre } from "@/entities/Genre";
 import useGameQueryStore from "@/stores/gameQueryStore";
 
 interface Props {

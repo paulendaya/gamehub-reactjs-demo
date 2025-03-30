@@ -7,7 +7,7 @@ import GenreList from "./components/GenreList";
 import Header from "./components/header/Header";
 import PlatformsFilter from "./components/PlatformsFilter";
 import { ColorModeProvider } from "./components/ui/color-mode";
-import useGenres from "./hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 import useGameQueryStore from "./stores/gameQueryStore";
 
 function App() {

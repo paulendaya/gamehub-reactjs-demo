@@ -3,7 +3,7 @@ import CriticScore from "./CriticScore";
 import PlatformList from "./PlatformList";
 import { RatingIcon } from "./RatingIcon";
 import getCroppedImageUrl from "@/services/image-url";
-import { Game } from "@/hooks/useGames";
+import { Game } from "../entities/Game";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -23,7 +23,7 @@ const GameCard = ({ game }: Props) => {
         overflow="hidden"
         _hover={{ scale: "1.05" }}
         transition={"all .2s ease-in-out"}
-        onClick={() => navigate(`/games/${game.id}`)}
+        onClick={() => navigate(`/games/${game.slug}`)}
         cursor={"pointer"}
       >
         <Image

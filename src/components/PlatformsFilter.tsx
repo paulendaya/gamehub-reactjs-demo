@@ -2,7 +2,8 @@ import {
   NativeSelectField,
   NativeSelectRoot,
 } from "@/components/ui/native-select";
-import usePlatforms, { Platform } from "@/hooks/usePlatforms";
+import usePlatforms from "@/hooks/usePlatforms";
+import { Platform } from "@/entities/Platform";
 import useGameQueryStore from "@/stores/gameQueryStore";
 
 const PlatformsFilter = () => {

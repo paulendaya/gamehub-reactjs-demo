@@ -5,7 +5,7 @@ import GameSorter from "../components/GameSorter";
 import GenreFilter from "../components/GenreFilter";
 import GenreList from "../components/GenreList";
 import PlatformsFilter from "../components/PlatformsFilter";
-import useGenres from "../hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 
 const Games = () => {
   const { data: genres, isLoading: isLoadingGenres } = useGenres();

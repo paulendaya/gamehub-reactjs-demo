@@ -2,7 +2,7 @@ import {
   NativeSelectField,
   NativeSelectRoot,
 } from "@/components/ui/native-select";
-import { Platform } from "@/hooks/usePlatforms";
+import { Platform } from "@/entities/Platform";
 
 interface Props {
   platforms: Platform[];
