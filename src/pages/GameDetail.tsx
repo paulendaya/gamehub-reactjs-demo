@@ -1,3 +1,4 @@
+import ExpandableText from "@/components/ExpandableText";
 import useGame from "@/hooks/useGame";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -12,7 +13,9 @@ const GameDetail = () => {
   return (
     <div>
       <h1>{game.name}</h1>
-      <p>{game.description_raw}</p>
+      <p>
+        <ExpandableText maxChars={500}>{game.description_raw}</ExpandableText>
+      </p>
     </div>
   );
 };
