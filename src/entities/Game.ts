@@ -10,4 +10,5 @@ export interface Game {
   genres: [];
   rating: number;
   description_raw: string;
+  publishers: Publisher[];
 }

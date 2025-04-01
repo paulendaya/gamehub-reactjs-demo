@@ -19,12 +19,12 @@ const ExpandableText = ({
   if (children.length <= maxChars) return children;
 
   return (
-    <div>
+    <p>
       {!expanded ? children.substring(0, maxChars) + "..." : children}
       <Button onClick={() => setExpanded(!expanded)} size="2xs">
         {!expanded ? textSeeMore : textSeeLess}
       </Button>
-    </div>
+    </p>
   );
 };
 
