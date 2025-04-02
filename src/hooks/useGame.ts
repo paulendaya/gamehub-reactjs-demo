@@ -1,9 +1,11 @@
-import APIClient from "@/services/api-client";
+import APIClient, { FetchResponse } from "@/services/api-client";
 import { Game } from "../entities/Game";
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
+import GameTrailers from "@/entities/GameTrailers";
 
 const apiClient = new APIClient<Game>("/games");
+const apiClientGameTrailers = new APIClient<GameTrailers>("/games");
 
 const useGame = (slug: string) =>
   useQuery<Game, Error>({
@@ -20,4 +22,12 @@ const useGame = (slug: string) =>
     staleTime: ms("1d"),
   }); */
 
+const useGameTrailers = (slug: string) =>
+  useQuery<FetchResponse<GameTrailers>, Error>({
+    queryKey: ["game-trailers", slug],
+    queryFn: () => apiClientGameTrailers.getTrailers(slug),
+    staleTime: ms("1d"),
+  });
+
+export { useGameTrailers };
 export default useGame;
