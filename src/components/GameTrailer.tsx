@@ -13,19 +13,21 @@ interface Props {
 }
 
 const GameTrailer = ({ slug }: Props) => {
-  const { data: gameTrailers } = useGameTrailers(slug!);
+  const { data: gameTrailers, isLoading } = useGameTrailers(slug!);
 
   const { setGameTrailerUrl, selectedGameTrailerUrl } = useGameTrailerStore();
   useEffect(() => {
-    if (gameTrailers?.results.length! > 0) {
+    if (gameTrailers?.results.length! > 0 && !isLoading) {
       setGameTrailerUrl(gameTrailers?.results[0].data.max!);
       /* videoTrailer.current
         ?.querySelector("source")
         ?.setAttribute("src", gameTrailers?.results[0].data.max!); */
+    } else {
+      setGameTrailerUrl("");
     }
   }, [gameTrailers]);
   const videoTrailer = useRef<HTMLVideoElement>(null);
-  if (gameTrailers?.results.length === 0) return null;
+  if (gameTrailers?.results.length === 0 && !isLoading) return null;
   return (
     <>
       <NativeSelectRoot variant="subtle" key="subtle">
