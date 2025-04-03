@@ -53,12 +53,12 @@ const GameTrailer = ({ slug }: Props) => {
         <Box paddingX={3} marginY={4}>
           <AspectRatio ratio={16 / 9}>
             <video
+              src={selectedGameTrailerUrl}
               controls
+              autoPlay
               poster={gameTrailers?.results[0].preview}
               ref={videoTrailer}
-            >
-              <source src={selectedGameTrailerUrl} type="video/mp4" />
-            </video>
+            ></video>
           </AspectRatio>
         </Box>
       )}
