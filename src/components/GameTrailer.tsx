@@ -52,7 +52,7 @@ const GameTrailer = ({ slug }: Props) => {
         </NativeSelectField>
       </NativeSelectRoot>
       {selectedGameTrailerUrl && (
-        <Box paddingX={3} marginY={4}>
+        <Box marginY={4}>
           <AspectRatio ratio={16 / 9}>
             <video
               src={selectedGameTrailerUrl}
