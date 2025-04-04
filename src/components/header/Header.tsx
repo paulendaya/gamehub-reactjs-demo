@@ -6,27 +6,32 @@ import { LuSearch } from "react-icons/lu";
 import { ColorModeButton, useColorMode } from "../ui/color-mode";
 import { useRef } from "react";
 import useGameQueryStore from "@/stores/gameQueryStore";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const searchRef = useRef<HTMLInputElement>(null);
   const setSearchKeyword = useGameQueryStore((s) => s.setSearchKeyword);
   const { toggleColorMode, colorMode } = useColorMode();
+  const navigate = useNavigate();
   return (
     <header>
       <Flex gap="3" align="center">
-        <Image
-          src="https://bit.ly/naruto-sage"
-          boxSize="50px"
-          borderRadius="full"
-          fit="cover"
-          alt="Game Hub"
-        />
+        <Link to={"/"}>
+          <Image
+            src="https://bit.ly/naruto-sage"
+            boxSize="50px"
+            borderRadius="full"
+            fit="cover"
+            alt="Game Hub"
+          />
+        </Link>
         <form
           action=""
           onSubmit={(event) => {
             event.preventDefault();
             if (searchRef.current) {
               setSearchKeyword(searchRef.current.value);
+              navigate("/");
             }
           }}
         >
