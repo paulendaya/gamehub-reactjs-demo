@@ -37,6 +37,12 @@ class APIClient<T> {
       .get<FetchResponse<T>>(`${this.endpoint}/${id}/movies`)
       .then((res) => res.data);
   };
+
+  getScrenshots = (id: string) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(`${this.endpoint}/${id}/screenshots`)
+      .then((res) => res.data);
+  };
 }
 
 export default APIClient;

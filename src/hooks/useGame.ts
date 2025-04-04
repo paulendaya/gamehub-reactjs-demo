@@ -6,6 +6,7 @@ import GameTrailers from "@/entities/GameTrailers";
 
 const apiClient = new APIClient<Game>("/games");
 const apiClientGameTrailers = new APIClient<GameTrailers>("/games");
+const apiClientGameScreenshots = new APIClient<GameScreenshot>("/games");
 
 const useGame = (slug: string) =>
   useQuery<Game, Error>({
@@ -29,5 +30,12 @@ const useGameTrailers = (slug: string) =>
     staleTime: ms("1d"),
   });
 
-export { useGameTrailers };
+const useGameScreenshots = (slug: string) =>
+  useQuery<FetchResponse<GameScreenshot>, Error>({
+    queryKey: ["game-screenshots", slug],
+    queryFn: () => apiClientGameScreenshots.getScrenshots(slug),
+    staleTime: ms("1d"),
+  });
+
+export { useGameTrailers, useGameScreenshots };
 export default useGame;
