@@ -1,4 +1,4 @@
-import { Genre } from "@/entities/Genre";
+import Genre from "@/entities/Genre";
 import { NativeSelectField, NativeSelectRoot } from "./ui/native-select";
 import useGameQueryStore from "@/stores/gameQueryStore";
 

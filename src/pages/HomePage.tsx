@@ -8,6 +8,7 @@ import PlatformsFilter from "../components/PlatformsFilter";
 import useGenres from "@/hooks/useGenres";
 
 const Games = () => {
+  document.title = "Game Hub by Paul Endaya";
   const { data: genres, isLoading: isLoadingGenres } = useGenres();
   return (
     <>
